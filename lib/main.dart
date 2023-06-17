@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kidana/custom_widget.dart';
 import 'package:kidana/image_text.dart';
 import 'package:kidana/strings.dart';
@@ -14,22 +16,26 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+    return ScreenUtilInit(
+
+        designSize:  Size(MediaQuery.of(context).size.width	,MediaQuery.of(context).size.height),
+    minTextAdapt: true,
+    splitScreenMode: true,
+    scaleByHeight: true,
+    useInheritedMediaQuery: true,
+    builder: (context , child) {
+   return MaterialApp(
+     debugShowCheckedModeBanner: false,
+        title: 'Kinda',
+        theme: ThemeData(
+
+          primarySwatch: Colors.blue,
+        ),
+        home: const MyHomePage(title: 'Kinda'),
+      );
+        }
     );
+
   }
 }
 
@@ -121,15 +127,189 @@ class _MyHomePageState extends State<MyHomePage>
       child: Scaffold(
         backgroundColor: Colors.white,
         body: Stack(children: [
-          Image.asset(
-            AppConst().background,
-            fit: BoxFit.fill,
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
+
+          Container(
+            decoration: BoxDecoration(
+              image:DecorationImage(
+            image:
+            AssetImage(
+                AppConst().background,
+              ),
+            ),
+          ),),
+          Positioned(
+            top: 5,
+              right: 5,
+              left: 5,
+
+              child: GestureDetector(
+                onTap:(){
+
+
+
+                } ,
+                child:  Container(
+                  height: 130.h,
+                  width: MediaQuery.of(context).size.width.w,
+                  decoration: BoxDecoration(
+                    image:DecorationImage(
+                      fit: BoxFit.cover
+                      ,
+                      image:
+                      AssetImage(
+
+                        AppConst().header,
+
+                      ),
+                    ),
+                  ),
+                  child: Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                      GestureDetector(onTap: (){
+
+                        setState(() {
+                                show =false;
+                          _isShow    =false;
+                          showWc     =false;
+                          showWcb    =false;
+                          showTrainB =false;
+                          showTrain  =false;
+                          showMosque =false;
+                          showMosqueB=false;
+                          showNzool  =false;
+                          showTrain2 =false;
+                          showmina   =false;
+                          khyam      =false;
+                          kitchen    =false;
+                          people     =false;
+                          wcMina     =false;
+                          carcaMina  =false;
+                          sand       =false;
+                          constructions=false;
+                          wcArafat   =false;
+                          namera     =false;
+                          showArafat =false;
+                        });
+                      }, child:
+                      Text(' اخفاء كامل ')),
+                      GestureDetector(onTap: (){
+
+                        setState(() {
+                          show =true;
+                          _isShow    =true;
+                          showWc     =true;
+                          showWcb    =true;
+                          showTrainB =true;
+                          showTrain  =true;
+                          showMosque =true;
+                          showMosqueB=true;
+                          showNzool  =true;
+                          showTrain2 =true;
+                          showmina   =true;
+                          khyam      =true;
+                          kitchen    =true;
+                          people     =true;
+                          wcMina     =true;
+                          carcaMina  =true;
+                          sand       =true;
+                          constructions=true;
+                          wcArafat   =true;
+                          namera     =true;
+                          showArafat =true;
+                        });
+                      }, child:
+              Text(' اظهار كامل ')),],),
+                  ),
+                ),
+              )
+            ,
+
           ),
           Positioned(
-            top: MediaQuery.of(context).size.height * .3,
-            left: 560,
+            left: 100.w,
+              top: 300.h,
+              child: GestureDetector(
+                onTap: (){
+                  setState(() {
+                    showmina   =false;
+                    khyam      =false;
+                    kitchen    =false;
+                    people     =false;
+                    wcMina     =false;
+                    carcaMina  =false;
+                  });
+                },
+                  onDoubleTap: (){setState(() {
+                    showmina   =true;
+                    khyam      =true;
+                    kitchen    =true;
+                    people     =true;
+                    wcMina     =true;
+                    carcaMina  =true;
+                  });},
+                  child: Text('MINA\nمنى', style: TextStyle(fontSize: 40.sp, fontWeight: FontWeight.w600, color: Colors.grey),))),
+          Positioned(
+              right: 100.w,
+              top: 200.h,
+              child: GestureDetector(
+                onTap: (){
+                  setState(() {
+                    sand       =false;
+                    constructions=false;
+                    wcArafat     =false;
+                    namera       =false;
+                    showArafat   =false;
+                  });
+
+
+
+
+                },
+                onDoubleTap: (){
+                  setState(() {
+                    sand       =true;
+                    constructions=true;
+                    wcArafat   =true;
+                    namera     =true;
+                    showArafat =true;
+                  });
+                    },
+                  child: Text('ARafat\nعرفات', style: TextStyle(fontSize: 40.sp, fontWeight: FontWeight.w600, color: Colors.grey),))),
+          Positioned(
+right: 1000.w,
+
+              bottom: 200.h,
+              child: GestureDetector(
+                onTap: (){
+                 setState(() {
+                   _isShow    =false;
+                   showWc     =false;
+                   showWcb    =false;
+                   showTrainB =false;
+                   showTrain  =false;
+                   showMosque =false;
+                   showMosqueB=false;
+                   showNzool  =false;
+                   showTrain2 =false;
+                 });
+                },
+                  onDoubleTap: (){setState(() {
+                    _isShow    =true;
+                    showWc     =true;
+                    showWcb    =true;
+                    showTrainB =true;
+                    showTrain  =true;
+                    showMosque =true;
+                    showMosqueB=true;
+                    showNzool  =true;
+                    showTrain2 =true;
+                  });},
+                  child: Text('MUZDALIFAH\nمزدلفه', style: TextStyle(fontSize: 40.sp, fontWeight: FontWeight.w600, color: Colors.grey),))),
+          Positioned(
+            top: MediaQuery.of(context).size.height * .3.h,
+            left: 560.w,
             child: Opacity(
               opacity: _opacity.value,
               child: Transform.scale(
@@ -145,13 +325,13 @@ class _MyHomePageState extends State<MyHomePage>
                     },
                     child: Image.asset(
                       AppConst().mozdlfa,
-                      width: MediaQuery.of(context).size.width * .19,
-                      height: MediaQuery.of(context).size.height * .4,
+                      width: MediaQuery.of(context).size.width * .19.w,
+                      height: MediaQuery.of(context).size.height * .4.h,
                     ),
                   ),
                   Positioned(
-                    top: MediaQuery.of(context).size.height * .06,
-                    right: MediaQuery.of(context).size.width * .01,
+                    top: MediaQuery.of(context).size.height * .06.h,
+                    right: MediaQuery.of(context).size.width * .01.w,
                     child: GestureDetector(
                       onTap: () {
                         setState(
@@ -172,9 +352,9 @@ class _MyHomePageState extends State<MyHomePage>
                                   child: Image.asset(
                                     AppConst().wcc,
                                     width:
-                                        MediaQuery.of(context).size.width * .1,
+                                        MediaQuery.of(context).size.width * .1.w,
                                     height:
-                                        MediaQuery.of(context).size.height * .1,
+                                        MediaQuery.of(context).size.height * .1.h,
                                   ),
                                 ),
                               ),
@@ -188,9 +368,9 @@ class _MyHomePageState extends State<MyHomePage>
                                   child: Image.asset(
                                     AppConst().mosque,
                                     width:
-                                        MediaQuery.of(context).size.width * .1,
+                                        MediaQuery.of(context).size.width * .1.w,
                                     height:
-                                        MediaQuery.of(context).size.height * .1,
+                                        MediaQuery.of(context).size.height * .1.h,
                                   ),
                                 ),
                               ),
@@ -199,8 +379,8 @@ class _MyHomePageState extends State<MyHomePage>
                     ),
                   ),
                   Positioned(
-                    top: 250,
-                    right: 100,
+                    top: 250.h,
+                    right: 100.w,
                     child: Visibility(
                       visible: showTrainB,
                       child: Opacity(
@@ -209,8 +389,8 @@ class _MyHomePageState extends State<MyHomePage>
                           scale: _transform.value,
                           child: Image.asset(
                             AppConst().train,
-                            width: MediaQuery.of(context).size.width * .1,
-                            height: MediaQuery.of(context).size.height * .1,
+                            width: MediaQuery.of(context).size.width * .1.w,
+                            height: MediaQuery.of(context).size.height * .1.h,
                           ),
                         ),
                       ),
@@ -233,8 +413,8 @@ class _MyHomePageState extends State<MyHomePage>
                             child: MyCustomWidget()),
                       )),
                   Positioned(
-                      top: 180,
-                      left: 200,
+                      top: 180.h,
+                      left: 200.w,
                       child: Visibility(
                         visible: _isShow,
                         child: GestureDetector(
@@ -249,8 +429,8 @@ class _MyHomePageState extends State<MyHomePage>
                             child: MyCustomWidget()),
                       )),
                   Positioned(
-                      top: 300,
-                      left: 170,
+                      top: 300.h,
+                      left: 170.w,
                       child: Visibility(
                         visible: _isShow,
                         child: GestureDetector(
@@ -265,8 +445,8 @@ class _MyHomePageState extends State<MyHomePage>
                             child: MyCustomWidget()),
                       )),
                   Positioned(
-                      top: 300,
-                      left: 80,
+                      top: 300.h,
+                      left: 80.w,
                       child: Visibility(
                         visible: _isShow,
                         child: GestureDetector(
@@ -290,8 +470,8 @@ class _MyHomePageState extends State<MyHomePage>
                   Visibility(
                     visible: showMosque,
                     child: Positioned(
-                        top: 150,
-                        right: 0,
+                        top: 150.h,
+                        right: 0.w,
                         child: ImageWithText(
                           text: "مســـــــــــجد\nالمشعر الحرام",
                         )),
@@ -299,8 +479,8 @@ class _MyHomePageState extends State<MyHomePage>
                   Visibility(
                     visible: showTrain,
                     child: Positioned(
-                        top: 230,
-                        right: 30,
+                        top: 230.h,
+                        right: 30.w,
                         child: ImageWithText(
                           text:
                               "مشروع تنظيم مــــــــواقع نزول الحجاج  \nاعند محطات قطار المشاعر المقدسة",
@@ -309,7 +489,7 @@ class _MyHomePageState extends State<MyHomePage>
                   Visibility(
                     visible: showTrain2,
                     child: Positioned(
-                        top: 370,
+                        top: 370.h,
                         left: 0,
                         child: ImageWithText(
                           text: "قطار المشاعر  \n(مزدلفة ٣)",
@@ -320,8 +500,8 @@ class _MyHomePageState extends State<MyHomePage>
             ),
           ),
           Positioned(
-              top: MediaQuery.of(context).size.height * .27,
-              left: 265,
+              top: MediaQuery.of(context).size.height * .27.h,
+              left: 265.w,
               child: Opacity(
                   opacity: _opacity.value,
                   child: Transform.scale(
@@ -335,19 +515,19 @@ class _MyHomePageState extends State<MyHomePage>
                           },
                           child: Image.asset(
                             AppConst().mina,
-                            width: MediaQuery.of(context).size.width * .18,
-                            height: MediaQuery.of(context).size.height * .4,
+                            width: MediaQuery.of(context).size.width * .18.w,
+                            height: MediaQuery.of(context).size.height * .4.h,
                           ),
                         ),
                         Visibility(
                           visible:carcaMina,
                           child: Positioned(
-                              top: 120,
-                              right: -11,
+                              top: 120.h,
+                              right: -11.w,
                               child: Image.asset(
                                 AppConst().craca,
-                                width: 110,
-                                height: 110,
+                                width: 110.w,
+                                height: 110.h,
                               )),
                         ),
                         Positioned(
@@ -361,16 +541,16 @@ class _MyHomePageState extends State<MyHomePage>
                                     visible:khyam,
                                     child: Image.asset(
                                       AppConst().khyam,
-                                      width: 80,
-                                      height: 80,
+                                      width: 80.w,
+                                      height: 80.h,
                                     ),
                                   ),
                                   Visibility(
                                     visible: kitchen,
                                     child: Image.asset(
                                       AppConst().home,
-                                      width: 80,
-                                      height: 80,
+                                      width: 80.w,
+                                      height: 80.h,
                                     ),
                                   )
                                 ]),
@@ -378,8 +558,8 @@ class _MyHomePageState extends State<MyHomePage>
                                   visible: people,
                                   child: Image.asset(
                                     AppConst().people,
-                                    width: 110,
-                                    height: 100,
+                                    width: 110.w,
+                                    height: 100.h,
                                   ),
                                 ),
                               ]),
@@ -387,17 +567,17 @@ class _MyHomePageState extends State<MyHomePage>
                         Visibility(
                           visible: wcMina,
                           child: Positioned(
-                              top: 230,
-                              right: 50,
+                              top: 230.h,
+                              right: 50.w,
                               child: Image.asset(
                                 AppConst().wc,
-                                width: 110,
-                                height: 100,
+                                width: 110.w,
+                                height: 100.h,
                               )),
                         ),
                         Positioned(
-                            top: 120,
-                            left: 140,
+                            top: 120.h,
+                            left: 140.w,
                             child: Visibility(
                               visible: showmina,
                               child: GestureDetector(
@@ -413,8 +593,8 @@ class _MyHomePageState extends State<MyHomePage>
                             )),
 
                         Positioned(
-                            top: 140,
-                            right: 13,
+                            top: 140.h,
+                            right: 13.w,
                             child: Visibility(
                               visible: showmina,
                               child: GestureDetector(
@@ -428,8 +608,8 @@ class _MyHomePageState extends State<MyHomePage>
                                   child: MyCustomWidget()),
                             )),
                         Positioned(
-                            top: 140,
-                            right: 80,
+                            top: 140.h,
+                            right: 80.w,
                             child: Visibility(
                               visible: showmina,
                               child: GestureDetector(
@@ -444,8 +624,8 @@ class _MyHomePageState extends State<MyHomePage>
                                   child: MyCustomWidget()),
                             )),
                         Positioned(
-                            top: 200,
-                            left: 80,
+                            top: 200.h,
+                            left: 80.w,
                             child: Visibility(
                               visible: showmina,
                               child: GestureDetector(
@@ -460,8 +640,8 @@ class _MyHomePageState extends State<MyHomePage>
                                   child: MyCustomWidget()),
                             )),
                         Positioned(
-                            top: 300,
-                            right: 70,
+                            top: 300.h,
+                            right: 70.w,
                             child: Visibility(
                               visible: showmina,
                               child: GestureDetector(
@@ -483,8 +663,8 @@ wcMina=!wcMina;
           Visibility(
             visible: carcaMina,
             child: Positioned(
-                top: MediaQuery.of(context).size.height * .4,
-                left: 550,
+                top: MediaQuery.of(context).size.height * .4.h,
+                left: 550.w,
                 child: ImageWithText(
                   text:
                   " تهيئة وتهذيب المساحات الجبلية  \nبمشــــعري مـــنى ومــزدلفة",
@@ -493,8 +673,8 @@ wcMina=!wcMina;
           ),Visibility(
             visible: khyam,
             child: Positioned(
-                top: MediaQuery.of(context).size.height * .3,
-                left: 300,
+                top: MediaQuery.of(context).size.height * .3.h,
+                left: 300.w,
                 child: ImageWithText(
                   text:
                   "إعادة تأهيل عدد من مواقع  \nمخيـــمات اســـــكان الحــــــجاج",
@@ -503,8 +683,8 @@ wcMina=!wcMina;
           Visibility(
             visible: kitchen,
             child: Positioned(
-                top: MediaQuery.of(context).size.height * .37,
-                left: 200,
+                top: MediaQuery.of(context).size.height * .37.h,
+                left: 200.w,
                 child: ImageWithText(
                   text: "مشروع أعمال تحسين\nالمطابخ المـــركزية",
                 )),
@@ -512,8 +692,8 @@ wcMina=!wcMina;
           Visibility(
             visible: people,
             child: Positioned(
-                top: MediaQuery.of(context).size.height * .45,
-                left: 200,
+                top: MediaQuery.of(context).size.height * .45.h,
+                left: 200.w,
                 child: ImageWithText(
                   text:
                   "منشـــأةالجمرات ",
@@ -522,16 +702,16 @@ wcMina=!wcMina;
           Visibility(
             visible: wcMina,
             child: Positioned(
-                top: MediaQuery.of(context).size.height * .6,
-                left: 300,
+                top: MediaQuery.of(context).size.height * .6.h,
+                left: 300.w,
                 child: ImageWithText(
                   text: "أعمال تحســـينات مـــــجمعات  \nدورات المياه واعمال البنية التحتية",
                 )),
           ),
 
           Positioned(
-              top: MediaQuery.of(context).size.height * .27,
-              right: 230,
+              top: MediaQuery.of(context).size.height * .27.h,
+              right: 230.w,
               child: Opacity(
                   opacity: _opacity.value,
                   child: Transform.scale(
@@ -545,24 +725,24 @@ wcMina=!wcMina;
                           },
                           child: Image.asset(
                             AppConst().arafat,
-                            width: MediaQuery.of(context).size.width * .20,
-                            height: MediaQuery.of(context).size.height * .5,
+                            width: MediaQuery.of(context).size.width * .20.w,
+                            height: MediaQuery.of(context).size.height * .5.h,
                           ),
                         ),
                         Visibility(
                           visible: sand,
                           child: Positioned(
-                              top: 80,
-                              left: 35,
+                              top: 80.h,
+                              left: 35.w,
                               child: Image.asset(
                                 AppConst().sand,
-                                width: 110,
-                                height: 110,
+                                width: 110.w,
+                                height: 110.h,
                               )),
                         ),
                         Positioned(
-                          top: 200,
-                          left: 50,
+                          top: 200.h,
+                          left: 50.w,
                           child: Column(
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
@@ -571,16 +751,16 @@ wcMina=!wcMina;
                                     visible:wcArafat,
                                     child: Image.asset(
                                       AppConst().wcc,
-                                      width: 145,
-                                      height: 154,
+                                      width: 145.w,
+                                      height: 154.h,
                                     ),
                                   ),
                                   Visibility(
                                     visible: constructions,
                                     child: Image.asset(
                                       AppConst().construction,
-                                      width: 150,
-                                      height: 150,
+                                      width: 150.w,
+                                      height: 150.h,
                                     ),
                                   ),
                                 ]),
@@ -589,17 +769,17 @@ wcMina=!wcMina;
                         Visibility(
                           visible: namera,
                           child: Positioned(
-                              top: 380,
-                              left: 50,
+                              top: 380.h,
+                              left: 50.w,
                               child: Image.asset(
                                 AppConst().mosque2,
-                                width: 110,
-                                height: 100,
+                                width: 110.w,
+                                height: 100.h,
                               )),
                         ),
                         Positioned(
-                            top: 380,
-                            left: 50,
+                            top: 380.h,
+                            left: 50.w,
                             child: Visibility(
                               visible: showArafat,
                               child: GestureDetector(
@@ -613,8 +793,8 @@ wcMina=!wcMina;
                                   child: MyCustomWidget()),
                             )),
                         Positioned(
-                            top: 100,
-                            left: 50,
+                            top: 100.h,
+                            left: 50.w,
                             child: Visibility(
                               visible: showArafat,
                               child: GestureDetector(
@@ -628,7 +808,7 @@ wcMina=!wcMina;
                                   child: MyCustomWidget()),
                             )),
                         Positioned(
-                            top: 300,
+                            top: 300.h,
                             right: 0,
                             child: Visibility(
                               visible: showArafat,
@@ -643,8 +823,8 @@ wcMina=!wcMina;
                                   child: MyCustomWidget()),
                             )),
                         Positioned(
-                            top: 300,
-                            left: 80,
+                            top: 300.h,
+                            left: 80.w,
                             child: Visibility(
                               visible: showArafat,
                               child: GestureDetector(
@@ -661,8 +841,8 @@ wcMina=!wcMina;
           Visibility(
             visible: sand,
             child: Positioned(
-                top: MediaQuery.of(context).size.height * .3,
-                right: 200,
+                top: MediaQuery.of(context).size.height * .3.h,
+                right: 200.w,
                 child: ImageWithText(
                   text:
                   " مشـــــــروع تطويـــــــر وتحســـــــــــين  \nالمنطقة المحيطة بجبل الرحمة",
@@ -672,8 +852,8 @@ wcMina=!wcMina;
           ),Visibility(
             visible: constructions,
             child: Positioned(
-                top: MediaQuery.of(context).size.height * .55,
-                right: 550,
+                top: MediaQuery.of(context).size.height * .55.h,
+                right: 550.w,
                 child: ImageWithText(
                   text:
                   "تصميم وتنفيذ البنية التحتية  \nللمخــــيمات المــــرحلة الثانيــــــــــة",
@@ -684,8 +864,8 @@ wcMina=!wcMina;
           Visibility(
             visible: namera,
             child: Positioned(
-                top: MediaQuery.of(context).size.height * .7,
-                right: 400,
+                top: MediaQuery.of(context).size.height * .7.h,
+                right: 400.w,
                 child: ImageWithText(
                   text: "مسجد نمرة",
                 )),
@@ -694,8 +874,8 @@ wcMina=!wcMina;
           Visibility(
             visible: wcArafat,
             child: Positioned(
-                top: MediaQuery.of(context).size.height * .6,
-                right: 100,
+                top: MediaQuery.of(context).size.height * .6.h,
+                right: 100.w,
                 child: ImageWithText(
                   text: " إنشاء مجمعات لدورات  \nذات الطابقين",
                 //  إنشاء مجمعات لدورات
