@@ -15,7 +15,11 @@ class AppConst{
   final String mina='assets/images/mina.png' ;
   final String wcTrainMosque='assets/images/wc-train-mosque.png' ;
   final String titles='assets/images/titels.png' ;
-
+  final String craca='assets/images/craca.png' ;
+  final String construction='assets/images/construction.png' ;
+  final String mosque2='assets/images/mosque2.png' ;
+  final String train='assets/images/train.png' ;
+//construction.png
 
 
 

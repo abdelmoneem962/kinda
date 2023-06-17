@@ -1,11 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:kidana/strings.dart';
 
 class MyCustomWidget extends StatefulWidget {
 
-   Widget widget;
-  MyCustomWidget({Key? key, required this.widget}) : super(key: key);
+
+  const MyCustomWidget({Key? key, }) : super(key: key);
   @override
   _MyCustomWidgetState createState() => _MyCustomWidgetState();
 }
@@ -39,7 +38,7 @@ class _MyCustomWidgetState extends State<MyCustomWidget>
           builder: (context, child) {
             return Container(
               decoration: ShapeDecoration(
-                color: Colors.grey.withOpacity(0.5),
+                color: Colors.green.withOpacity(0.7),
                 shape: CircleBorder(),
               ),
               child: Padding(
@@ -51,25 +50,12 @@ class _MyCustomWidgetState extends State<MyCustomWidget>
             );
           },
           child: Stack(
-            
+
             children:[ Container(
               decoration: ShapeDecoration(
                 color: Colors.grey,
                 shape: CircleBorder(),
               ),
-             child:Stack(
-               children:[
-                 
-               Image.asset(AppConst().titles),
-                 Positioned(
-                   top: 0,
-                     left: 0,
-                     bottom: 0,
-                     right: 0,
-                     child: Text("مشــروع توير وتحسين  "))
-            ]
-             ),
-
 
         ),
 
